@@ -15,25 +15,7 @@ class AparatiController extends Controller
       
         return response()->json($aparat);
     }
-//     function index($apa=1, $pac_id=0){
-//         if($apa==1){
-//        $primus1=Primus::where('vreme','<',14)->with('pacient.pomeranje')->get();
-//        $primus2=Primus::where('vreme','>',13)->with('pacient.pomeranje')->get();
-//        $aparat=['smena1'=> $primus1, 'smena2'=> $primus2, 'naslov'=>'Primus', 'pac_id'=>$pac_id];
-//         }elseif($apa==2){
-//        $oncor1=Oncor::where('vreme','<',14)->with('pacient.pomeranje')->get();
-//        $oncor2=Oncor::where('vreme','>',13)->with('pacient.pomeranje')->get();
-//        $aparat=['smena1'=> $oncor1, 'smena2'=> $oncor2, 'naslov'=>'Oncor', 'pac_id'=>$pac_id];    
-//         }
-//        return response()->json($aparat);
-//    }
-    
-    
-    
-    
-    
-    
-    
+
     
       function ubaciPacijenta($aparat,$id_vreme,$pacient){
           if($aparat==1){
