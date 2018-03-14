@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class Elekta2Controller extends Controller
 {
    function index($id=0){
-     //   return Pacient::all()[1]->primus;
         $elekta21=Elekta2::where('vreme','<',14)->get();
         $elekta22=Elekta2::where('vreme','>',13)->get();
         return view('aparati.elekta2', compact('elekta21','elekta22','id'));
