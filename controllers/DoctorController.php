@@ -13,53 +13,21 @@ class DoctorController extends Controller
     }
     
             function drLista(Doctor $doktor, $status='svi_pacijenti'){
-        //      $l=  \App\Localization::all();
-//         return $l[6]->localizationlike;
-//                 foreach($l as $s){
-//                        if($s->localizationlike->where('user_id',Auth::id())->first()){
-//                            $s->checked=1;
-//                        }else{
-//                            $s->checked=null;
-//                        }
-//                    }
-//                    return $l;
-                
-          
-      //   return $user =Auth::user()->localization()->get(); 
-              // return $doktor->pacient[4]->localization->localizationlike; 
            $naj= DoctorController::sortiraj('name');
-         
-            DoctorController::check(collect($naj[0]),'localizationlike');
+           DoctorController::check(collect($naj[0]),'localizationlike');
            $klj=[3,2,1];
            foreach($klj as $k){
                $z[]=$naj[$k-1];
            }
            if (count($klj)==2){
-           
              return  collect(array_merge($z[0]->toArray(),$z[1]->toArray()))->sortByDesc('id')->values()->take(6); 
            }elseif(count($klj)==1){
                 return  collect($z[0])->sortByDesc('id')->values()->take(6); 
            }else{
                return  collect(array_merge($z[0]->toArray(),$z[1]->toArray(),$z[2]->toArray()))->sortByDesc('id')->values()->take(9);  
            }    
-                
-                
-                
-                
-                
-                
-                
-                
-                
-        $paci=Pacient::with('nastavak')->has('nastavak')->get();
-//           -> whereHas('nastavakZadnji',function ($query){
-//    $query->where('nastavakObrada', '<>', null)->where('nastavakPocetak',null);
-//})
-      
-       
-    //  return test($pac,3);
-      //  return DoctorController::test($pac,7);
-       // $p= $pac[0]->doctor()->where('id',1)->get();
+           $paci=Pacient::with('nastavak')->has('nastavak')->get();
+
         foreach($pac as $p){
         if($p->doctor->where('id',1)->first()){
             $p->checked=1;
@@ -74,17 +42,13 @@ class DoctorController extends Controller
         
         $doc=Doctor::all();
         return collect(array_merge($pac->toArray(),$doc->toArray()))->sortBy('name')->values();
-        
-        
-        
+          
     foreach($paci as $p){
         if($p->nastavak->last()!=null){
          $t[]=$p->nastavakZadnji;
     }
     }
-   // return $t;
-    
-    foreach($t as $w){
+     foreach($t as $w){
         $qw[]=$w[0];
     }
     $va= collect($qw)->where('nastavakKraj',null);
