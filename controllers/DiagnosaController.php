@@ -10,7 +10,8 @@ class DiagnosaController extends Controller
 {
      function dijagnoze(){
          $dijagnoza=Diagnosa::get();
-        $dijagnoza=$dijagnoza->sortBy('naziv');
+        $dijagnoza=$dijagnoza
+             ->sortBy('naziv');
         return view('dijagnoze', compact('dijagnoza'));
     }
     function dijagnozaSave(){
@@ -23,7 +24,7 @@ class DiagnosaController extends Controller
     function dijagnozaUpdate(Diagnosa $dijagnoza){
         Diagnosa::
             where('id', $dijagnoza->id)
-            ->update(['sifra' => request()->sifra, 'naziv' => request()->naziv]);
+            ->update(['sifra'=>request()->sifra, 'naziv'=>request()->naziv]);
         return back();
     }
     function delete($id){
